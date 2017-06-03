@@ -4,7 +4,6 @@ BASE_TOOLCHAIN := /data/bbToolChain/usr/local/share
 BASE_COMPILER := $(BASE_TOOLCHAIN)/c6000
 BASE_SABIOS := $(BASE_TOOLCHAIN)/tidspbios/bios_5_41_00_06
 BASE_BSL := $(BASE_COMPILER)
-BASE_IQM := /data/home/in4342-06/libs/iqmathlib
 
 CC := cl6x
 TCONF := tconf
@@ -27,13 +26,13 @@ PROJNAME := pool_notify
 #   ----------------------------------------------------------------------------
 DEBUG :=
 # CFLAGS := -I$(BASE_BSL)/dsp/include -DP__ROFILE -s -mw
-CFLAGS := -I$(BASE_BSL)/dsp/include -I$(BASE_IQM)/include -DP__ROFILE -mw
-LDFLAGS := -i$(BASE_BSL)/dsp/lib -i$(BASE_IQM)/lib
+CFLAGS := -I$(BASE_BSL)/dsp/include -DP__ROFILE -mw
+LDFLAGS := -i$(BASE_BSL)/dsp/lib
 CSRCS := task.c pool_notify_config.c dsp_main.c
 ASRCS :=
 BIOSTCF := pool_notify.tcf
 OBJS :=
-LIBS := -lIQmath_c64x+.lib -ldsplink.lib -ldsplinkpool.lib -ldsplinkmpcs.lib -ldsplinkmplist.lib -ldsplinkmsg.lib -ldsplinknotify.lib -ldsplinkringio.lib -ldsplinkdata.lib
+LIBS := -ldsplink.lib -ldsplinkpool.lib -ldsplinkmpcs.lib -ldsplinkmplist.lib -ldsplinkmsg.lib -ldsplinknotify.lib -ldsplinkringio.lib -ldsplinkdata.lib
 CMDS := $(PROJNAME).cmd
 MAPFILE := $(PROJNAME).map
 BIN := $(PROJNAME).out
@@ -216,5 +215,5 @@ clean:
 	@rm -f ./$(OBJDIR_R)/* *~
 
 send: $(BINDIR_R)/$(BIN)
-	scp -P 40022 $(BINDIR_R)/$(BIN) root@80.112.147.22:/home/root/esLAB/carlo/
+	scp $(BINDIR_R)/$(BIN) root@192.168.0.202:/home/root/esLAB/pool_notify/.
 

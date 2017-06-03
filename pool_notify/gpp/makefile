@@ -135,4 +135,4 @@ clean:
 	@rm -f $(OBJDIR_R)/* *~
 
 send: $(BINDIR_R)/$(BIN)
-	scp -P 40022 $(BINDIR_R)/$(BIN) root@80.112.147.22:/home/root/esLAB/carlo/
+	scp $(BINDIR_R)/$(BIN) root@192.168.0.202:/home/root/esLAB/pool_notify/.

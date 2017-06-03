@@ -16,7 +16,6 @@
 /*  ----------------------------------- Sample Headers              */
 #include <pool_notify_config.h>
 #include <task.h>
-#include <IQmath.h>
 
 extern Uint16 MPCSXFER_BufferSize ;
 
@@ -112,10 +111,6 @@ int sum_dsp()
 Int Task_execute (Task_TransferInfo * info)
 {
     int sum;
-
-    float f = 2.5;
-    _iq a;
-    a = _FtoIQ(f);
 
     //wait for semaphore
 	SEM_pend (&(info->notifySemObj), SYS_FOREVER);
