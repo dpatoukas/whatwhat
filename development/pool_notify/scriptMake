@@ -1,0 +1,9 @@
+#!/bin/bash
+cd gpp
+make clean 
+make 
+cd ../dsp
+make clean
+make
+
+sleep 5

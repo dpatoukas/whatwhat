@@ -165,7 +165,7 @@ static Void Task_notify (Uint32 eventNo, Ptr arg, Ptr info)
 
     count++;
     if (count==1) {
-        buf =(unsigned char*)info ;
+        buf =(int16_t*)info ;
     }
     if (count==2) {
         length = (int)info;
